@@ -1,0 +1,1246 @@
+@import "tailwindcss";
+
+/* ============================================
+   GLOBALS.CSS — YUM SUSHI
+   Sistema de 10 Temas + Estilos Globais
+   ============================================ */
+
+/* ---------- TEMA 1: CARVÃO & OURO (padrão) ---------- */
+:root,
+body.tema-1 {
+  --bg: linear-gradient(160deg, #0e0e10, #16161b);
+  --bg-solid: #0e0e10;
+  --cor-estrutural: #c9a96e;
+  --cor-conversao: #e8b860;
+  --cor-card: #131317;
+  --borda-card: rgba(201, 169, 110, 0.15);
+  --texto-principal: #f5f0e8;
+  --texto-secundario: rgba(245, 240, 232, 0.65);
+  --font-display: "Cormorant Garamond", serif;
+  --navbar-scrolled: rgba(14, 14, 16, 0.95);
+  --overlay-historia: rgba(14, 14, 16, 0.65);
+  --card-radius: 4px;
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --hover-shadow: 0 0 30px rgba(201, 169, 110, 0.1);
+  --is-dark: 1;
+}
+
+/* ---------- TEMA 2: ROBUSTA & COBRE ---------- */
+body.tema-2 {
+  --bg: linear-gradient(160deg, #120c0a, #1c1310);
+  --bg-solid: #120c0a;
+  --cor-estrutural: #b8722a;
+  --cor-conversao: #d4924a;
+  --cor-card: #18110e;
+  --borda-card: rgba(184, 114, 42, 0.15);
+  --texto-principal: #f5f0e8;
+  --texto-secundario: rgba(245, 240, 232, 0.65);
+  --font-display: "Cormorant Garamond", serif;
+  --navbar-scrolled: rgba(18, 12, 10, 0.95);
+  --overlay-historia: rgba(18, 12, 10, 0.65);
+  --card-radius: 4px;
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --hover-shadow: 0 0 30px rgba(184, 114, 42, 0.1);
+  --is-dark: 1;
+}
+
+/* ---------- TEMA 3: FUMAÇA & BRASA ---------- */
+body.tema-3 {
+  --bg: linear-gradient(160deg, #121416, #1a1d20);
+  --bg-solid: #121416;
+  --cor-estrutural: #e8602a;
+  --cor-conversao: #d4843a;
+  --cor-card: #181b1e;
+  --borda-card: rgba(232, 96, 42, 0.15);
+  --texto-principal: #f5f0e8;
+  --texto-secundario: rgba(245, 240, 232, 0.65);
+  --font-display: "Playfair Display", serif;
+  --navbar-scrolled: rgba(18, 20, 22, 0.95);
+  --overlay-historia: rgba(18, 20, 22, 0.65);
+  --card-radius: 4px;
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --hover-shadow: 0 0 30px rgba(232, 96, 42, 0.1);
+  --is-dark: 1;
+}
+
+/* ---------- TEMA 4: MUSGO NEGRO ---------- */
+body.tema-4 {
+  --bg: linear-gradient(160deg, #050d10, #08161a);
+  --bg-solid: #050d10;
+  --cor-estrutural: #ffffff;
+  --cor-conversao: #c9a96e;
+  --cor-card: #071317;
+  --borda-card: rgba(255, 255, 255, 0.08);
+  --texto-principal: #ffffff;
+  --texto-secundario: rgba(255, 255, 255, 0.65);
+  --font-display: "Cormorant Garamond", serif;
+  --navbar-scrolled: rgba(5, 13, 16, 0.95);
+  --overlay-historia: rgba(5, 13, 16, 0.65);
+  --card-radius: 0px;
+  --card-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+  --hover-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
+  --is-dark: 1;
+}
+
+/* ---------- TEMA 5: BORGONHA & BRONZE ---------- */
+body.tema-5 {
+  --bg: linear-gradient(160deg, #15080e, #220d17);
+  --bg-solid: #15080e;
+  --cor-estrutural: #cd7f32;
+  --cor-conversao: #e5a96f;
+  --cor-card: #1a0b12;
+  --borda-card: rgba(205, 127, 50, 0.15);
+  --texto-principal: #f5f0e8;
+  --texto-secundario: rgba(245, 240, 232, 0.65);
+  --font-display: "Cormorant Garamond", serif;
+  --navbar-scrolled: rgba(21, 8, 14, 0.95);
+  --overlay-historia: rgba(21, 8, 14, 0.65);
+  --card-radius: 6px;
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --hover-shadow: 0 0 30px rgba(205, 127, 50, 0.1);
+  --is-dark: 1;
+}
+
+/* ---------- TEMA 6: NOITE & PLATINA ---------- */
+body.tema-6 {
+  --bg: linear-gradient(160deg, #080a10, #121622);
+  --bg-solid: #080a10;
+  --cor-estrutural: #a8b8c8;
+  --cor-conversao: #ffffff;
+  --cor-card: #0c0f17;
+  --borda-card: rgba(168, 184, 200, 0.15);
+  --texto-principal: #f5f0e8;
+  --texto-secundario: rgba(245, 240, 232, 0.65);
+  --font-display: "Cormorant Garamond", serif;
+  --navbar-scrolled: rgba(8, 10, 16, 0.95);
+  --overlay-historia: rgba(8, 10, 16, 0.65);
+  --card-radius: 8px;
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --hover-shadow: 0 0 30px rgba(168, 184, 200, 0.1);
+  --is-dark: 1;
+}
+
+/* ---------- TEMA 7: ABISMO & JADE ---------- */
+body.tema-7 {
+  --bg: linear-gradient(160deg, #050e0f, #0b1b1e);
+  --bg-solid: #050e0f;
+  --cor-estrutural: #3ab888;
+  --cor-conversao: #5ad4a4;
+  --cor-card: #081416;
+  --borda-card: rgba(58, 184, 136, 0.15);
+  --texto-principal: #f5f0e8;
+  --texto-secundario: rgba(245, 240, 232, 0.65);
+  --font-display: "Cormorant Garamond", serif;
+  --navbar-scrolled: rgba(5, 14, 15, 0.95);
+  --overlay-historia: rgba(5, 14, 15, 0.65);
+  --card-radius: 8px;
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --hover-shadow: 0 0 30px rgba(58, 184, 136, 0.1);
+  --is-dark: 1;
+}
+
+/* ---------- TEMA 8: TAUPE & OURO ROSA ---------- */
+body.tema-8 {
+  --bg: linear-gradient(160deg, #151210, #221e1a);
+  --bg-solid: #151210;
+  --cor-estrutural: #b76e79;
+  --cor-conversao: #e8c3c9;
+  --cor-card: #1a1614;
+  --borda-card: rgba(183, 110, 121, 0.15);
+  --texto-principal: #f5f0e8;
+  --texto-secundario: rgba(245, 240, 232, 0.65);
+  --font-display: "Cormorant Garamond", serif;
+  --navbar-scrolled: rgba(21, 18, 16, 0.95);
+  --overlay-historia: rgba(21, 18, 16, 0.65);
+  --card-radius: 8px;
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --hover-shadow: 0 0 30px rgba(183, 110, 121, 0.1);
+  --is-dark: 1;
+}
+
+/* ---------- TEMA 9: OBSIDIANA & PRATA ---------- */
+body.tema-9 {
+  --bg: linear-gradient(160deg, #0a0a0a, #141414);
+  --bg-solid: #0a0a0a;
+  --cor-estrutural: #a0a0a0;
+  --cor-conversao: #e0e0e0;
+  --cor-card: #0f0f0f;
+  --borda-card: rgba(160, 160, 160, 0.15);
+  --texto-principal: #f5f0e8;
+  --texto-secundario: rgba(245, 240, 232, 0.65);
+  --font-display: "Cormorant Garamond", serif;
+  --navbar-scrolled: rgba(10, 10, 10, 0.95);
+  --overlay-historia: rgba(10, 10, 10, 0.65);
+  --card-radius: 2px;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  --hover-shadow: 0 0 30px rgba(160, 160, 160, 0.1);
+  --is-dark: 1;
+}
+
+/* ---------- TEMA 10: OMAKASE MINIMALISTA ---------- */
+body.tema-10 {
+  --bg: linear-gradient(160deg, #11100f, #1b1917);
+  --bg-solid: #11100f;
+  --cor-estrutural: #e6dfd3;
+  --cor-conversao: #d4a843;
+  --cor-card: #151412;
+  --borda-card: rgba(230, 223, 211, 0.08);
+  --texto-principal: #fbf8f5;
+  --texto-secundario: rgba(251, 248, 245, 0.65);
+  --font-display: "Cormorant Garamond", serif;
+  --navbar-scrolled: rgba(17, 16, 15, 0.95);
+  --overlay-historia: rgba(17, 16, 15, 0.65);
+  --card-radius: 4px;
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --hover-shadow: 0 0 20px rgba(230, 223, 211, 0.08);
+  --is-dark: 1;
+}
+
+/* ============================================
+   ESTILOS GLOBAIS
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--texto-principal);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  line-height: 1.9;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Scrollbar customizada */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--cor-estrutural);
+  border-radius: 3px;
+  opacity: 0.6;
+}
+
+
+/* ============================================
+   ANIMAÇÕES
+   ============================================ */
+
+/* Scroll Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Flip Card Hint */
+@keyframes flipHint {
+  0% {
+    transform: rotateY(0deg);
+  }
+  20% {
+    transform: rotateY(28deg);
+  }
+  40% {
+    transform: rotateY(0deg);
+  }
+  60% {
+    transform: rotateY(32deg);
+  }
+  80% {
+    transform: rotateY(4deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+/* WhatsApp FAB pulse */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-dot {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Badge float */
+@keyframes float-badge {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Fade in up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Shimmer for badges */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* ============================================
+   FLIP CARDS — DEFINITIVO
+   ============================================ */
+
+.flip-card {
+  perspective: 1200px;
+  height: 420px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+@media (hover: hover) {
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.flip-card-front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+  z-index: 1;
+}
+
+.flip-card.flipped .flip-card-front {
+  z-index: 1;
+}
+
+.flip-card.flipped .flip-card-back {
+  z-index: 2;
+}
+
+/* ============================================
+   BENTO GALLERY GRID
+   ============================================ */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 240px;
+  gap: 16px;
+}
+
+.bento-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--card-radius, 8px);
+  border: 1px solid var(--borda-card);
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
+}
+
+.bento-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--hover-shadow);
+}
+
+.bento-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bento-item:hover img {
+  transform: scale(1.05);
+}
+
+.bento-span-2-2 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.bento-span-2-1 {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.bento-span-1-2 {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+@media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 200px;
+  }
+  .bento-span-2-2 {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 240px;
+  }
+  .bento-span-2-2,
+  .bento-span-2-1,
+  .bento-span-1-2 {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+}
+
+/* Hint animation — aplicado via JS com IntersectionObserver */
+.flip-card-inner.hinting {
+  animation: flipHint 1.4s ease forwards;
+}
+
+/* ============================================
+   COMPONENTES REUTILIZÁVEIS
+   ============================================ */
+
+/* Botão primário (cor-conversao) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--cor-conversao);
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  padding: 14px 28px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Botão outline */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--texto-principal);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  padding: 13px 27px;
+  border-radius: 6px;
+  border: 1.5px solid var(--cor-estrutural);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-outline:hover {
+  background: var(--cor-estrutural);
+  color: var(--bg-solid, #000);
+  transform: translateY(-1px);
+}
+
+/* Pill button (categorias) */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--texto-secundario);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1.5px solid var(--borda-card);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-pill:hover,
+.btn-pill.active {
+  background: var(--cor-conversao);
+  color: #fff;
+  border-color: var(--cor-conversao);
+}
+
+/* Seção wrapper */
+.section-wrapper {
+  padding: 120px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Linha decorativa antes do título */
+.section-tag {
+  display: inline-block;
+  width: 36px;
+  height: 2px;
+  background: var(--cor-estrutural);
+  margin-bottom: 16px;
+  vertical-align: middle;
+  margin-right: 12px;
+}
+
+/* Título de seção */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 500;
+  color: var(--texto-principal);
+  line-height: 1.15;
+  margin-bottom: 60px;
+}
+
+.section-title + .section-subtitle {
+  margin-top: -44px;
+  margin-bottom: 60px;
+}
+
+/* Subtítulo de seção */
+.section-subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 6px !important;
+  color: var(--texto-secundario);
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+/* Card base */
+.card-base {
+  background: var(--cor-card);
+  border: 1px solid var(--borda-card);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card-base:not(.flip-card-front):not(.flip-card-back):hover {
+  box-shadow: var(--hover-shadow);
+  transform: translateY(-2px);
+}
+
+/* Backdrop blur card (tema 7, 10) */
+.card-blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 10px 24px;
+  background: transparent;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease,
+    box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar.scrolled {
+  background: var(--navbar-scrolled);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero-section {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.78) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    transparent 65%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 24px 80px;
+  max-width: 900px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.5px;
+  animation: float-badge 3s ease-in-out infinite;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+
+/* ============================================
+   GALERIA BRICKWORK
+   ============================================ */
+.gallery-brickwork {
+  display: grid;
+  gap: 6px;
+}
+
+.gallery-row {
+  display: grid;
+  gap: 6px;
+  height: 280px;
+}
+
+.gallery-row.row-1,
+.gallery-row.row-3 {
+  grid-template-columns: 25% 50% 25%;
+}
+
+.gallery-row.row-2 {
+  grid-template-columns: 50% 25% 25%;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+}
+
+.gallery-item img,
+.gallery-item > div {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img,
+.gallery-item:hover > div > img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .gallery-row {
+    height: 160px;
+  }
+
+  .gallery-row.row-1,
+  .gallery-row.row-3 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery-row.row-1 .gallery-item:first-child,
+  .gallery-row.row-3 .gallery-item:first-child {
+    display: none;
+  }
+
+  .gallery-row.row-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery-row.row-2 .gallery-item:last-child {
+    display: none;
+  }
+}
+
+/* ============================================
+   FORMULÁRIO DE RESERVA
+   ============================================ */
+.reserva-form-wrapper {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.45s ease;
+}
+
+.reserva-form-wrapper.open {
+  max-height: 800px;
+}
+
+/* ============================================
+   AVALIAÇÕES CARROSSEL
+   ============================================ */
+.avaliacoes-track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.4s ease;
+}
+
+/* ============================================
+   TEMA 1 — MUSGO & OURO (padrão): overrides
+   ============================================ */
+body.tema-1 h1,
+body.tema-1 h2,
+body.tema-1 h3,
+body.tema-1 .section-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  color: #C9A96E !important;
+  font-weight: 500 !important;
+}
+body.tema-1 .section-subtitle,
+body.tema-1 .subtitle {
+  font-family: 'Montserrat', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 6px !important;
+  font-size: 11px !important;
+  color: rgba(201, 169, 110, 0.6) !important;
+}
+body.tema-1 .btn-primary {
+  background: #E8B860 !important;
+  color: #0E0E10 !important;
+  border: none !important;
+}
+body.tema-1 .btn-outline {
+  border: 1.5px solid #C9A96E !important;
+  color: #C9A96E !important;
+}
+body.tema-1 .btn-outline:hover {
+  background: #C9A96E !important;
+  color: #0E0E10 !important;
+}
+body.tema-1 hr,
+body.tema-1 .section-tag {
+  background: linear-gradient(to right, transparent, rgba(201, 169, 110, 0.4), transparent) !important;
+}
+
+/* ============================================
+   TEMA 2 — ROBUSTA & COBRE: overrides
+   ============================================ */
+body.tema-2 h1,
+body.tema-2 h2,
+body.tema-2 h3,
+body.tema-2 .section-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  color: #B8722A !important;
+  font-weight: 500 !important;
+}
+body.tema-2 .section-subtitle,
+body.tema-2 .subtitle {
+  font-family: 'Montserrat', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 6px !important;
+  font-size: 11px !important;
+  color: rgba(184, 114, 42, 0.6) !important;
+}
+body.tema-2 .btn-primary {
+  background: #D4924A !important;
+  color: #120C0A !important;
+  border: none !important;
+}
+body.tema-2 .btn-outline {
+  border: 1.5px solid #B8722A !important;
+  color: #B8722A !important;
+}
+body.tema-2 .btn-outline:hover {
+  background: #B8722A !important;
+  color: #120C0A !important;
+}
+body.tema-2 hr,
+body.tema-2 .section-tag {
+  background: linear-gradient(to right, transparent, rgba(184, 114, 42, 0.4), transparent) !important;
+}
+
+/* ============================================
+   TEMA 3 — FUMAÇA & BRASA: overrides
+   ============================================ */
+body.tema-3 h1,
+body.tema-3 h2,
+body.tema-3 h3,
+body.tema-3 .section-title {
+  font-family: 'Playfair Display', serif !important;
+  color: #E8602A !important;
+  font-weight: 600 !important;
+}
+body.tema-3 .section-subtitle,
+body.tema-3 .subtitle {
+  font-family: 'Montserrat', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 6px !important;
+  font-size: 11px !important;
+  color: rgba(232, 96, 42, 0.6) !important;
+}
+body.tema-3 .btn-primary {
+  background: #D4843A !important;
+  color: #121416 !important;
+  border: none !important;
+}
+body.tema-3 .btn-outline {
+  border: 1.5px solid #E8602A !important;
+  color: #E8602A !important;
+}
+body.tema-3 .btn-outline:hover {
+  background: #E8602A !important;
+  color: #121416 !important;
+}
+body.tema-3 hr,
+body.tema-3 .section-tag {
+  background: linear-gradient(to right, transparent, rgba(232, 96, 42, 0.4), transparent) !important;
+}
+
+/* ============================================
+   TEMA 4 — MUSGO NEGRO: overrides
+   ============================================ */
+body.tema-4 h1,
+body.tema-4 h2,
+body.tema-4 h3,
+body.tema-4 .section-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  color: #FFFFFF !important;
+  font-weight: 400 !important;
+}
+body.tema-4 .section-subtitle,
+body.tema-4 .subtitle {
+  font-family: 'Montserrat', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 6px !important;
+  font-size: 11px !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+body.tema-4 .btn-primary {
+  background: #C9A96E !important;
+  color: #050D10 !important;
+  border: none !important;
+}
+body.tema-4 .btn-outline {
+  border: 1.5px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+body.tema-4 .btn-outline:hover {
+  background: #FFFFFF !important;
+  color: #050D10 !important;
+}
+body.tema-4 hr,
+body.tema-4 .section-tag {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ============================================
+   TEMA 5 — BORGONHA & BRONZE: overrides
+   ============================================ */
+body.tema-5 h1,
+body.tema-5 h2,
+body.tema-5 h3,
+body.tema-5 .section-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  color: #CD7F32 !important;
+  font-weight: 500 !important;
+}
+body.tema-5 .section-subtitle,
+body.tema-5 .subtitle {
+  font-family: 'Montserrat', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 6px !important;
+  font-size: 11px !important;
+  color: rgba(205, 127, 50, 0.6) !important;
+}
+body.tema-5 .btn-primary {
+  background: #E5A96F !important;
+  color: #15080E !important;
+  border: none !important;
+}
+body.tema-5 .btn-outline {
+  border: 1.5px solid #CD7F32 !important;
+  color: #CD7F32 !important;
+}
+body.tema-5 .btn-outline:hover {
+  background: #CD7F32 !important;
+  color: #15080E !important;
+}
+body.tema-5 hr,
+body.tema-5 .section-tag {
+  background: linear-gradient(to right, transparent, rgba(205, 127, 50, 0.4), transparent) !important;
+}
+
+/* ============================================
+   TEMA 6 — NOITE & PLATINA: overrides
+   ============================================ */
+body.tema-6 h1,
+body.tema-6 h2,
+body.tema-6 h3,
+body.tema-6 .section-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  color: #A8B8C8 !important;
+  font-weight: 600 !important;
+}
+body.tema-6 .section-subtitle,
+body.tema-6 .subtitle {
+  font-family: 'Montserrat', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 6px !important;
+  font-size: 11px !important;
+  color: rgba(168, 184, 200, 0.6) !important;
+}
+body.tema-6 .btn-primary {
+  background: #FFFFFF !important;
+  color: #080A10 !important;
+  border: none !important;
+}
+body.tema-6 .btn-outline {
+  border: 1.5px solid #A8B8C8 !important;
+  color: #A8B8C8 !important;
+}
+body.tema-6 .btn-outline:hover {
+  background: #A8B8C8 !important;
+  color: #080A10 !important;
+}
+body.tema-6 hr,
+body.tema-6 .section-tag {
+  background: rgba(168, 184, 200, 0.2) !important;
+}
+
+/* ============================================
+   TEMA 7 — ABISMO & JADE: overrides
+   ============================================ */
+body.tema-7 h1,
+body.tema-7 h2,
+body.tema-7 h3,
+body.tema-7 .section-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  color: #3AB888 !important;
+  font-weight: 500 !important;
+}
+body.tema-7 .section-subtitle,
+body.tema-7 .subtitle {
+  font-family: 'Montserrat', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 6px !important;
+  font-size: 11px !important;
+  color: rgba(58, 184, 136, 0.6) !important;
+}
+body.tema-7 .btn-primary {
+  background: #5AD4A4 !important;
+  color: #050E0F !important;
+  border: none !important;
+}
+body.tema-7 .btn-outline {
+  border: 1.5px solid #3AB888 !important;
+  color: #3AB888 !important;
+}
+body.tema-7 .btn-outline:hover {
+  background: #3AB888 !important;
+  color: #050E0F !important;
+}
+body.tema-7 hr,
+body.tema-7 .section-tag {
+  background: linear-gradient(to right, transparent, rgba(58, 184, 136, 0.4), transparent) !important;
+}
+
+/* ============================================
+   TEMA 8 — TAUPE & OURO ROSA: overrides
+   ============================================ */
+body.tema-8 h1,
+body.tema-8 h2,
+body.tema-8 h3,
+body.tema-8 .section-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  color: #b76e79 !important;
+  font-weight: 500 !important;
+}
+body.tema-8 .section-subtitle,
+body.tema-8 .subtitle {
+  font-family: 'Montserrat', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 6px !important;
+  font-size: 11px !important;
+  color: rgba(183, 110, 121, 0.6) !important;
+}
+body.tema-8 .btn-primary {
+  background: #e8c3c9 !important;
+  color: #151210 !important;
+  border: none !important;
+}
+body.tema-8 .btn-outline {
+  border: 1.5px solid #b76e79 !important;
+  color: #b76e79 !important;
+}
+body.tema-8 .btn-outline:hover {
+  background: #b76e79 !important;
+  color: #151210 !important;
+}
+body.tema-8 hr,
+body.tema-8 .section-tag {
+  background: linear-gradient(to right, transparent, rgba(183, 110, 121, 0.4), transparent) !important;
+}
+
+/* ============================================
+   TEMA 9 — OBSIDIANA & PRATA: overrides
+   ============================================ */
+body.tema-9 h1,
+body.tema-9 h2,
+body.tema-9 h3,
+body.tema-9 .section-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  color: #a0a0a0 !important;
+  font-weight: 500 !important;
+}
+body.tema-9 .section-subtitle,
+body.tema-9 .subtitle {
+  font-family: 'Montserrat', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 6px !important;
+  font-size: 11px !important;
+  color: rgba(160, 160, 160, 0.6) !important;
+}
+body.tema-9 .btn-primary {
+  background: #e0e0e0 !important;
+  color: #0a0a0a !important;
+  border: none !important;
+}
+body.tema-9 .btn-outline {
+  border: 1.5px solid #a0a0a0 !important;
+  color: #a0a0a0 !important;
+}
+body.tema-9 .btn-outline:hover {
+  background: #a0a0a0 !important;
+  color: #0a0a0a !important;
+}
+body.tema-9 hr,
+body.tema-9 .section-tag {
+  background: linear-gradient(to right, transparent, rgba(160, 160, 160, 0.4), transparent) !important;
+}
+
+/* ============================================
+   TEMA 10 — MINIMALISMO OMAKASE: overrides
+   ============================================ */
+body.tema-10 h1,
+body.tema-10 h2,
+body.tema-10 .section-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 300 !important;
+  color: #f0eae0 !important;
+  font-size: clamp(3rem, 6vw, 5rem) !important;
+  letter-spacing: -1px !important;
+}
+body.tema-10 h3 {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 400 !important;
+  color: #f0eae0 !important;
+}
+body.tema-10 .section-subtitle,
+body.tema-10 .subtitle {
+  font-family: 'Montserrat', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 8px !important;
+  font-size: 10px !important;
+  color: rgba(240, 234, 224, 0.4) !important;
+}
+body.tema-10 .btn-primary {
+  background: transparent !important;
+  color: var(--cor-conversao, #d4a843) !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  transition: opacity 0.2s ease !important;
+}
+body.tema-10 .btn-primary::after {
+  content: " ————→" !important;
+}
+body.tema-10 .btn-primary svg {
+  display: none !important;
+}
+body.tema-10 .btn-primary:hover {
+  opacity: 0.8 !important;
+  transform: none !important;
+  background: transparent !important;
+}
+body.tema-10 .btn-outline {
+  background: transparent !important;
+  color: var(--cor-conversao, #d4a843) !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+}
+body.tema-10 .btn-outline::after {
+  content: " ————→" !important;
+}
+body.tema-10 .btn-outline:hover {
+  opacity: 0.8 !important;
+  transform: none !important;
+  background: transparent !important;
+}
+body.tema-10 hr,
+body.tema-10 .section-tag {
+  display: none !important;
+}
+
+/* ============================================
+   RESPONSIVE HELPERS
+   ============================================ */
+
+@media (max-width: 640px) {
+  .section-wrapper {
+    padding: 64px 20px;
+  }
+
+  .flip-card {
+    height: 380px;
+  }
+}
+
+/* Tema escuro/claro — texto em fundos escuros */
+body.tema-1 .card-dark-override,
+body.tema-2 .card-dark-override,
+body.tema-3 .card-dark-override,
+body.tema-4 .card-dark-override,
+body.tema-5 .card-dark-override,
+body.tema-6 .card-dark-override,
+body.tema-7 .card-dark-override,
+body.tema-8 .card-dark-override,
+body.tema-9 .card-dark-override,
+body.tema-10 .card-dark-override {
+  color: var(--texto-principal);
+}
+
+/* ============================================
+   AVALIAÇÕES CARROSSEL — RESPONSIVE CARD WIDTH
+   ============================================ */
+.avaliacao-card {
+  min-width: calc(33.333% - 14px) !important;
+}
+
+@media (max-width: 1023px) {
+  .avaliacao-card {
+    min-width: calc(50% - 10px) !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .avaliacao-card {
+    min-width: 100% !important;
+  }
+}
