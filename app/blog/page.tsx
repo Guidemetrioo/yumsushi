@@ -182,7 +182,7 @@ export default function BlogPage() {
                 >
                   <span>{formatDate(post.date)}</span>
                   <span>·</span>
-                  <span>⏱ {post.readTime}</span>
+                  <span>{post.readTime}</span>
                 </div>
 
                 <h2

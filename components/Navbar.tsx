@@ -15,7 +15,7 @@ const navLinks = [
   { href: "#localizacao", label: "Localização" },
 ];
 
-const WA_LINK = "https://wa.me/5511000000000";
+const WA_LINK = "https://wa.me/5511960175164";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -207,7 +207,7 @@ export default function Navbar() {
         >
           {/* Reservar Mesa — primeiro item mobile */}
           <a
-            href={WA_LINK}
+            href="https://dg.dguests.com/reserva_mesa/yumsushi"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -224,7 +224,7 @@ export default function Navbar() {
               letterSpacing: "0.5px",
             }}
           >
-            📅 Reservar Mesa
+            Reservar Mesa
           </a>
 
           {navLinks.map((link) => (

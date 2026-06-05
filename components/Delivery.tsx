@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const WA_LINK = "https://wa.me/5511000000000";
+const WA_LINK = "https://wa.me/5511960175164";
 
 export default function Delivery() {
   const ref = useRef<HTMLDivElement>(null);
@@ -44,13 +44,7 @@ export default function Delivery() {
           gap: 24,
         }}
       >
-        {/* Emoji */}
-        <div
-          className="reveal"
-          style={{ fontSize: 48, lineHeight: 1, marginBottom: 4 }}
-        >
-          🛵
-        </div>
+
 
         {/* Title */}
         <h2

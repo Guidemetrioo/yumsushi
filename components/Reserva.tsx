@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const WA_BASE = "https://wa.me/5511000000000?text=";
+const WA_BASE = "https://wa.me/5511960175164?text=";
 
 const horarios = [
   { dia: "Segunda–Quinta", h: "12h–15h e 19h–23h" },
@@ -12,14 +12,14 @@ const horarios = [
 ];
 
 const pagamentos = [
-  "💵 Dinheiro",
-  "💳 Crédito",
-  "💳 Débito",
-  "📱 Pix",
-  "🍽️ VR",
-  "🍽️ Alelo",
-  "🍽️ Sodexo",
-  "🍽️ Ticket Restaurante",
+  "Dinheiro",
+  "Crédito",
+  "Débito",
+  "Pix",
+  "VR",
+  "Alelo",
+  "Sodexo",
+  "Ticket Restaurante",
 ];
 
 export default function Reserva() {
@@ -70,11 +70,11 @@ export default function Reserva() {
 
     const msg = encodeURIComponent(
       `Olá! Gostaria de fazer uma reserva no Yum Sushi.\n\n` +
-        `👤 Nome: ${form.nome}\n` +
-        `📅 Data e hora: ${dtFormatted}\n` +
-        `👥 Pessoas: ${form.pessoas}\n` +
-        `📞 WhatsApp: ${form.whatsapp}\n` +
-        (form.observacao ? `📝 Obs: ${form.observacao}` : "")
+        `Nome: ${form.nome}\n` +
+        `Data e hora: ${dtFormatted}\n` +
+        `Pessoas: ${form.pessoas}\n` +
+        `WhatsApp: ${form.whatsapp}\n` +
+        (form.observacao ? `Obs: ${form.observacao}` : "")
     );
 
     window.open(`${WA_BASE}${msg}`, "_blank", "noopener,noreferrer");
@@ -146,7 +146,7 @@ export default function Reserva() {
           <div className="reveal" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <a
               id="reserva-online"
-              href="https://dguests.com.br/yum-sushi"
+              href="https://dg.dguests.com/reserva_mesa/yumsushi"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
@@ -159,11 +159,11 @@ export default function Reserva() {
                 maxWidth: 400,
               }}
             >
-              📅 Reservar Mesa Online
+              Reservar Mesa Online
             </a>
             
             <a
-              href="https://api.whatsapp.com/send?phone=5511993437142&text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20Yum%20Sushi."
+              href="https://api.whatsapp.com/send?phone=5511960175164&text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20Yum%20Sushi."
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -199,7 +199,7 @@ export default function Reserva() {
                 gap: 10,
               }}
             >
-              🕐 Horários de Funcionamento
+              Horários de Funcionamento
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {horarios.map((h) => (

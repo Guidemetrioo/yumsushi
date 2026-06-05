@@ -1,6 +1,6 @@
 "use client";
 
-const WA_LINK = "https://wa.me/5511000000000";
+const WA_LINK = "https://wa.me/5511960175164";
 
 export default function WhatsAppFab() {
   return (

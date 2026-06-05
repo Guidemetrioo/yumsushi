@@ -168,7 +168,7 @@ export default function Blog() {
                 >
                   <span>{formatDate(post.date)}</span>
                   <span>·</span>
-                  <span>⏱ {post.readTime} de leitura</span>
+                  <span>{post.readTime} de leitura</span>
                 </div>
 
                 <h3

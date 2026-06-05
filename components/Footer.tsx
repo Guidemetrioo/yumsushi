@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-const WA_LINK = "https://wa.me/5511000000000";
+const WA_LINK = "https://wa.me/5511960175164";
 
 const navLinks = [
   { href: "#inicio", label: "Início" },

@@ -112,7 +112,7 @@ export default function Avaliacoes() {
 
   const maxIndex = avaliacoes.length - itemsPerView.current;
 
-  const renderStars = (n: number) => "⭐".repeat(n);
+  const renderStars = (n: number) => "★".repeat(n);
 
   return (
     <section
@@ -186,7 +186,7 @@ export default function Avaliacoes() {
               </span>
             </div>
             <p style={{ fontSize: 14, color: "#f5a623", letterSpacing: 2 }}>
-              ⭐⭐⭐⭐⭐
+              ★★★★★
             </p>
             <a
               href="https://www.google.com/maps/search/?api=1&query=Yum+Sushi+Avenida+Cupec%C3%AA+2346"
@@ -230,8 +230,8 @@ export default function Avaliacoes() {
                 }}
               >
                 {/* Stars */}
-                <p style={{ fontSize: 18, letterSpacing: 2, lineHeight: 1 }}>
-                  ⭐⭐⭐⭐⭐
+                <p style={{ fontSize: 18, letterSpacing: 2, lineHeight: 1, color: "#f5a623" }}>
+                  ★★★★★
                 </p>
 
                 {/* Text */}
@@ -343,7 +343,7 @@ export default function Avaliacoes() {
             className="btn-outline"
             style={{ fontSize: 13, textDecoration: "none" }}
           >
-            ⭐ Ler todas as avaliações no Google
+            ★ Ler todas as avaliações no Google
           </a>
         </div>
       </div>

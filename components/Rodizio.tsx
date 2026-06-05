@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-const WA_LINK = "https://wa.me/5511000000000";
+const WA_LINK = "https://wa.me/5511960175164";
 const WA_RESERVA = `${WA_LINK}?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20Yum%20Sushi.`;
 
 interface PriceOption {
@@ -93,12 +93,12 @@ const rodizioCards: RodizioCard[] = [
 ];
 
 const categorias = [
-  { id: "sashimi", label: "🐟 Sashimi" },
-  { id: "sushi", label: "🍱 Sushi" },
-  { id: "uramaki", label: "🌀 Uramaki" },
-  { id: "temaki", label: "🌮 Temaki" },
-  { id: "entradas", label: "🥟 Entradas" },
-  { id: "quentes", label: "🔥 Pratos Quentes" },
+  { id: "sashimi", label: "Sashimi" },
+  { id: "sushi", label: "Sushi" },
+  { id: "uramaki", label: "Uramaki" },
+  { id: "temaki", label: "Temaki" },
+  { id: "entradas", label: "Entradas" },
+  { id: "quentes", label: "Pratos Quentes" },
 ];
 
 const cardapioItems: Record<
@@ -315,7 +315,7 @@ export default function Rodizio() {
                         fontFamily: "Montserrat, sans-serif",
                       }}
                     >
-                      ⭐ Mais Popular
+                      Mais Popular
                     </div>
                   )}
 
@@ -359,7 +359,7 @@ export default function Rodizio() {
                         fontFamily: "Montserrat, sans-serif",
                       }}
                     >
-                      {card.tipo === "dupla" ? "👥 PROMOÇÃO CASAL / DUPLA" : "👤 RODÍZIO INDIVIDUAL"}
+                      {card.tipo === "dupla" ? "PROMOÇÃO CASAL / DUPLA" : "RODÍZIO INDIVIDUAL"}
                     </span>
                     <h3
                       style={{
@@ -410,7 +410,7 @@ export default function Rodizio() {
                     }}
                   >
                     <a
-                      href={WA_RESERVA}
+                      href="https://dg.dguests.com/reserva_mesa/yumsushi"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-primary"
@@ -514,7 +514,7 @@ export default function Rodizio() {
                               marginTop: 1,
                             }}
                           >
-                            ✔
+                            ✓
                           </span>
                           {item}
                         </li>
@@ -524,7 +524,7 @@ export default function Rodizio() {
 
                   {/* Back CTA */}
                   <a
-                    href={WA_RESERVA}
+                    href="https://dg.dguests.com/reserva_mesa/yumsushi"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-primary"
@@ -551,7 +551,7 @@ export default function Rodizio() {
             fontFamily: "Montserrat, sans-serif",
           }}
         >
-          👆 Toque para ver o que está incluso
+          Toque para ver o que está incluso
         </p>
 
         {/* ── Cardápio Section ── */}

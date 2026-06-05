@@ -173,7 +173,7 @@ export default async function BlogPostPage(
               fontFamily: "Montserrat, sans-serif",
             }}
           >
-            {formatDate(post.date)} · ⏱ {post.readTime} de leitura
+            {formatDate(post.date)} · {post.readTime} de leitura
           </span>
         </div>
 
@@ -257,12 +257,12 @@ export default async function BlogPostPage(
             Reserve sua mesa agora e venha viver a experiência Yum Sushi.
           </p>
           <a
-            href="https://wa.me/5511000000000?text=Olá!%20Li%20o%20blog%20e%20gostaria%20de%20fazer%20uma%20reserva."
+            href="https://dg.dguests.com/reserva_mesa/yumsushi"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"
           >
-            Reservar Mesa pelo WhatsApp
+            Reservar Mesa Online
           </a>
         </div>
 

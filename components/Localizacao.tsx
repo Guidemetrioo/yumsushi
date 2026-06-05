@@ -157,7 +157,7 @@ export default function Localizacao() {
                 className="btn-primary"
                 style={{ justifyContent: "center", width: "100%" }}
               >
-                🗺️ Google Maps
+                Google Maps
               </a>
 
               <a
@@ -168,7 +168,7 @@ export default function Localizacao() {
                 className="btn-outline"
                 style={{ justifyContent: "center", width: "100%" }}
               >
-                🚗 Abrir no Waze
+                Abrir no Waze
               </a>
 
               <a
@@ -179,7 +179,7 @@ export default function Localizacao() {
                 className="btn-outline"
                 style={{ justifyContent: "center", width: "100%" }}
               >
-                🚕 Chamar Uber
+                Chamar Uber
               </a>
             </div>
 

@@ -64,7 +64,7 @@ export default function ThemeSwitcher() {
           fontWeight: 600,
         }}
       >
-        🎨 Seletor Temporário
+        Seletor Temporário
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
         {themes.map((t) => (
