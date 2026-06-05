@@ -6,68 +6,89 @@ import Image from "next/image";
 const WA_LINK = "https://wa.me/5511000000000";
 const WA_RESERVA = `${WA_LINK}?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20Yum%20Sushi.`;
 
+interface PriceOption {
+  label: string;
+  valor: string;
+}
+
 interface RodizioCard {
   id: string;
   nome: string;
-  preco: string;
-  precoDesc?: string;
+  precoDestaque: string;
+  precoDestaqueDesc: string;
   imagem: string;
+  tabelaPrecos?: PriceOption[];
   incluso: string[];
   destaque?: boolean;
+  tipo: "dupla" | "individual";
 }
 
 const rodizioCards: RodizioCard[] = [
   {
-    id: "rodizio-tradicional",
-    nome: "Rodízio Tradicional",
-    preco: "R$ 79,90",
-    precoDesc: "por pessoa",
-    imagem:
-      "https://images.unsplash.com/photo-1534482421-64566f976cfa?w=600&q=80",
-    incluso: [
-      "Sashimis variados (salmão, atum, peixe branco)",
-      "Niguiris tradicionais",
-      "Uramakis (Philadelphia, Califórnia, Tropical)",
-      "Temaki aberto",
-      "Gyoza grelhado",
-      "Missoshiru",
-      "Sobremesa: sorvete de chá verde",
-    ],
-  },
-  {
-    id: "rodizio-premium",
-    nome: "Rodízio Premium",
-    preco: "R$ 109,90",
-    precoDesc: "por pessoa",
-    imagem:
-      "https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=600&q=80",
-    incluso: [
-      "Tudo do Tradicional +",
-      "Sashimi especial (vieiras, polvo, camarão)",
-      "Hot rolls grelhados",
-      "Niguiri de salmão maçaricado",
-      "Tataki de atum",
-      "Edamame temperado",
-      "Sobremesa: pudim de yuzu",
-    ],
-    destaque: true,
-  },
-  {
-    id: "rodizio-executivo",
-    nome: "Rodízio Executivo",
-    preco: "R$ 59,90",
-    precoDesc: "seg–sex, almoço",
+    id: "rodizio-casal-almoco",
+    nome: "Rodízio Casal / Dupla",
+    precoDestaque: "R$ 159,90",
+    precoDestaqueDesc: "o casal no almoço",
     imagem:
       "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&q=80",
-    incluso: [
-      "Sashimis clássicos",
-      "Niguiris (salmão e peixe branco)",
-      "Uramaki Califórnia",
-      "Temaki de salmão",
-      "Missoshiru",
-      "Bebida não alcoólica inclusa",
-      "Disponível seg–sex no almoço",
+    tabelaPrecos: [
+      { label: "Almoço (Seg a Sex)", valor: "R$ 159,90 o casal" }
     ],
+    incluso: [
+      "Promoção especial de almoço para 2 pessoas",
+      "Válido de Segunda a Sexta no Almoço (exceto feriados)",
+      "Frutos do mar inclusos: Camarão, Lula, Polvo e Ovas",
+      "Sobremesa à vontade inclusa no rodízio",
+      "Rodízio completo com sushis, sashimis, pratos quentes e frios",
+      "Bebidas à parte"
+    ],
+    destaque: false,
+    tipo: "dupla",
+  },
+  {
+    id: "rodizio-casal-jantar",
+    nome: "Rodízio Casal / Dupla",
+    precoDestaque: "R$ 199,90",
+    precoDestaqueDesc: "o casal no jantar (Seg a Qui)",
+    imagem:
+      "https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=600&q=80",
+    tabelaPrecos: [
+      { label: "Jantar (Seg a Qui)", valor: "R$ 199,90 o casal" },
+      { label: "Jantar (Sex, Sáb, Dom e Feriados)", valor: "R$ 212,90 o casal" }
+    ],
+    incluso: [
+      "Promoção jantar especial para 2 pessoas",
+      "Válido todas as noites no Jantar, incluindo finais de semana e feriados",
+      "Frutos do mar inclusos: Camarão, Lula, Polvo e Ovas",
+      "Sobremesa à vontade inclusa no rodízio",
+      "Rodízio completo com sushis, sashimis, pratos quentes e frios",
+      "Bebidas à parte"
+    ],
+    destaque: true,
+    tipo: "dupla",
+  },
+  {
+    id: "rodizio-premium-individual",
+    nome: "Rodízio Premium Individual",
+    precoDestaque: "R$ 98,90",
+    precoDestaqueDesc: "por pessoa no almoço",
+    imagem:
+      "https://images.unsplash.com/photo-1534482421-64566f976cfa?w=600&q=80",
+    tabelaPrecos: [
+      { label: "Almoço (Seg a Dom)", valor: "R$ 98,90 por pessoa" },
+      { label: "Jantar (Seg a Qui)", valor: "R$ 119,90 por pessoa" },
+      { label: "Jantar (Sex, Sáb, Dom e Feriados)", valor: "R$ 129,90 por pessoa" }
+    ],
+    incluso: [
+      "Experiência individual completa",
+      "Peça do seu jeito direto no tablet, servido na mesa",
+      "Frutos do mar inclusos: Camarão, Lula, Polvo e Ovas",
+      "Sobremesa inclusa no rodízio",
+      "Sashimis (salmão, atum, peixe branco) e sushis contemporâneos",
+      "Bebidas à parte"
+    ],
+    destaque: false,
+    tipo: "individual",
   },
 ];
 
@@ -182,21 +203,27 @@ export default function Rodizio() {
     // Flip hint on first viewport entry — one time only
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hintedRef.current) {
-          hintedRef.current = true;
-          const delays = [0, 400, 800];
-          cardsRef.current.forEach((card, i) => {
-            if (!card) return;
-            const inner = card.querySelector(".flip-card-inner") as HTMLElement;
-            if (!inner) return;
-            setTimeout(() => {
-              inner.classList.add("hinting");
-              setTimeout(() => inner.classList.remove("hinting"), 1500);
-            }, delays[i]);
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll(".reveal").forEach((el) => {
+            el.classList.add("visible");
           });
+
+          if (!hintedRef.current) {
+            hintedRef.current = true;
+            const delays = [0, 400, 800];
+            cardsRef.current.forEach((card, i) => {
+              if (!card) return;
+              const inner = card.querySelector(".flip-card-inner") as HTMLElement;
+              if (!inner) return;
+              setTimeout(() => {
+                inner.classList.add("hinting");
+                setTimeout(() => inner.classList.remove("hinting"), 1500);
+              }, delays[i]);
+            });
+          }
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
 
     const section = document.getElementById("rodizio");
@@ -320,6 +347,20 @@ export default function Rodizio() {
                       flexDirection: "column",
                     }}
                   >
+                    <span
+                      style={{
+                        fontSize: 10,
+                        fontWeight: 700,
+                        letterSpacing: "1.5px",
+                        textTransform: "uppercase",
+                        color: "var(--cor-estrutural)",
+                        marginBottom: 6,
+                        display: "block",
+                        fontFamily: "Montserrat, sans-serif",
+                      }}
+                    >
+                      {card.tipo === "dupla" ? "👥 PROMOÇÃO CASAL / DUPLA" : "👤 RODÍZIO INDIVIDUAL"}
+                    </span>
                     <h3
                       style={{
                         fontFamily: "var(--font-display)",
@@ -342,9 +383,9 @@ export default function Rodizio() {
                           lineHeight: 1.1,
                         }}
                       >
-                        {card.preco}
+                        {card.precoDestaque}
                       </p>
-                      {card.precoDesc && (
+                      {card.precoDestaqueDesc && (
                         <p
                           style={{
                             fontSize: 12,
@@ -352,7 +393,7 @@ export default function Rodizio() {
                             fontWeight: 500,
                           }}
                         >
-                          {card.precoDesc}
+                          {card.precoDestaqueDesc}
                         </p>
                       )}
                     </div>
@@ -399,7 +440,46 @@ export default function Rodizio() {
                         letterSpacing: "3px",
                         textTransform: "uppercase",
                         color: "var(--cor-estrutural)",
-                        marginBottom: 16,
+                        marginBottom: 12,
+                        fontFamily: "Montserrat, sans-serif",
+                      }}
+                    >
+                      Valores do Rodízio
+                    </p>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 6,
+                        marginBottom: 18,
+                        borderBottom: "1px solid var(--borda-card)",
+                        paddingBottom: 14,
+                      }}
+                    >
+                      {card.tabelaPrecos?.map((p, idx) => (
+                        <div
+                          key={idx}
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            fontSize: 12,
+                            color: "var(--texto-principal)",
+                          }}
+                        >
+                          <span style={{ fontWeight: 500 }}>{p.label}</span>
+                          <span style={{ color: "var(--cor-conversao)", fontWeight: 700 }}>{p.valor}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <p
+                      style={{
+                        fontSize: 11,
+                        fontWeight: 700,
+                        letterSpacing: "3px",
+                        textTransform: "uppercase",
+                        color: "var(--cor-estrutural)",
+                        marginBottom: 12,
                         fontFamily: "Montserrat, sans-serif",
                       }}
                     >
@@ -410,7 +490,7 @@ export default function Rodizio() {
                         listStyle: "none",
                         display: "flex",
                         flexDirection: "column",
-                        gap: 10,
+                        gap: 8,
                         marginBottom: 24,
                       }}
                     >
@@ -421,7 +501,7 @@ export default function Rodizio() {
                             display: "flex",
                             alignItems: "flex-start",
                             gap: 10,
-                            fontSize: 13,
+                            fontSize: 12,
                             color: "var(--texto-principal)",
                             lineHeight: 1.4,
                           }}
