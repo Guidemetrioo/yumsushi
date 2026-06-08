@@ -42,10 +42,6 @@ export default function Hero() {
         style={{
           position: "absolute",
           inset: "-20% 0 0 0",
-          backgroundImage: "url(https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=1600&q=90)",
-          backgroundSize: "cover",
-          backgroundPosition: "center top",
-          backgroundRepeat: "no-repeat",
           willChange: "transform",
         }}
       />
@@ -57,6 +53,7 @@ export default function Hero() {
       <div className="hero-content" style={{ width: "100%" }}>
         {/* Location tag */}
         <div
+          className="hero-badges-container"
           style={{
             display: "flex",
             flexWrap: "wrap",
@@ -75,22 +72,6 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Location label */}
-        <p
-          style={{
-            fontSize: 13,
-            fontWeight: 600,
-            color: "var(--cor-conversao)",
-            letterSpacing: "3px",
-            textTransform: "uppercase",
-            marginBottom: 12,
-            fontFamily: "Montserrat, sans-serif",
-            textShadow: "0 1px 8px rgba(0,0,0,0.5)",
-          }}
-        >
-          Jardim Jabaquara, São Paulo
-        </p>
-
         {/* Main title */}
         <h1 className="hero-title">O sushi que<br />conquistou o Jabaquara</h1>
 
@@ -101,6 +82,7 @@ export default function Hero() {
 
         {/* CTA Buttons */}
         <div
+          className="hero-buttons-container"
           style={{
             display: "flex",
             flexWrap: "wrap",

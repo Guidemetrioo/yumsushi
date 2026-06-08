@@ -25,6 +25,29 @@ interface RodizioCard {
 
 const rodizioCards: RodizioCard[] = [
   {
+    id: "rodizio-premium-individual",
+    nome: "Rodízio Premium Individual",
+    precoDestaque: "R$ 98,90",
+    precoDestaqueDesc: "por pessoa no almoço",
+    imagem:
+      "https://images.unsplash.com/photo-1534482421-64566f976cfa?w=600&q=80",
+    tabelaPrecos: [
+      { label: "Almoço (Seg a Dom)", valor: "R$ 98,90 por pessoa" },
+      { label: "Jantar (Seg a Qui)", valor: "R$ 119,90 por pessoa" },
+      { label: "Jantar (Sex, Sáb, Dom e Feriados)", valor: "R$ 129,90 por pessoa" }
+    ],
+    incluso: [
+      "Experiência individual completa",
+      "Peça do seu jeito direto no tablet, servido na mesa",
+      "Frutos do mar inclusos: Camarão, Lula, Polvo e Ovas",
+      "Sobremesa inclusa no rodízio",
+      "Sashimis (salmão, atum, peixe branco) e sushis contemporâneos",
+      "Bebidas à parte"
+    ],
+    destaque: false,
+    tipo: "individual",
+  },
+  {
     id: "rodizio-casal-almoco",
     nome: "Rodízio Casal / Dupla",
     precoDestaque: "R$ 159,90",
@@ -66,29 +89,6 @@ const rodizioCards: RodizioCard[] = [
     ],
     destaque: true,
     tipo: "dupla",
-  },
-  {
-    id: "rodizio-premium-individual",
-    nome: "Rodízio Premium Individual",
-    precoDestaque: "R$ 98,90",
-    precoDestaqueDesc: "por pessoa no almoço",
-    imagem:
-      "https://images.unsplash.com/photo-1534482421-64566f976cfa?w=600&q=80",
-    tabelaPrecos: [
-      { label: "Almoço (Seg a Dom)", valor: "R$ 98,90 por pessoa" },
-      { label: "Jantar (Seg a Qui)", valor: "R$ 119,90 por pessoa" },
-      { label: "Jantar (Sex, Sáb, Dom e Feriados)", valor: "R$ 129,90 por pessoa" }
-    ],
-    incluso: [
-      "Experiência individual completa",
-      "Peça do seu jeito direto no tablet, servido na mesa",
-      "Frutos do mar inclusos: Camarão, Lula, Polvo e Ovas",
-      "Sobremesa inclusa no rodízio",
-      "Sashimis (salmão, atum, peixe branco) e sushis contemporâneos",
-      "Bebidas à parte"
-    ],
-    destaque: false,
-    tipo: "individual",
   },
 ];
 
@@ -197,6 +197,7 @@ const cardapioItems: Record<
 export default function Rodizio() {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const [activeCategoria, setActiveCategoria] = useState("sashimi");
+  const [flippedCards, setFlippedCards] = useState<Record<string, boolean>>({});
   const hintedRef = useRef(false);
 
   useEffect(() => {
@@ -231,8 +232,13 @@ export default function Rodizio() {
     return () => observer.disconnect();
   }, []);
 
-  const toggleFlip = (card: HTMLDivElement) => {
-    card.classList.toggle("flipped");
+  const toggleFlip = (id: string) => {
+    if (window.innerWidth <= 768) {
+      setFlippedCards((prev) => ({
+        ...prev,
+        [id]: !prev[id],
+      }));
+    }
   };
 
   return (
@@ -273,14 +279,13 @@ export default function Rodizio() {
             <div
               key={card.id}
               id={card.id}
-              className="flip-card reveal"
+              className={`flip-card reveal ${flippedCards[card.id] ? "flipped" : ""}`}
               style={{ transitionDelay: `${idx * 0.1}s` }}
               ref={(el) => {
                 cardsRef.current[idx] = el;
               }}
               onClick={() => {
-                if (cardsRef.current[idx])
-                  toggleFlip(cardsRef.current[idx]!);
+                toggleFlip(card.id);
               }}
             >
               <div className="flip-card-inner">

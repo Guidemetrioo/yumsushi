@@ -10,7 +10,6 @@ import Blog from "@/components/Blog";
 import Localizacao from "@/components/Localizacao";
 import Footer from "@/components/Footer";
 import WhatsAppFab from "@/components/WhatsAppFab";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 export default function Home() {
   return (
@@ -29,8 +28,6 @@ export default function Home() {
       </main>
       <Footer />
       <WhatsAppFab />
-      {/* Painel temporário de temas — remover após aprovação */}
-      <ThemeSwitcher />
     </>
   );
 }

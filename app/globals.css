@@ -350,7 +350,7 @@ body {
   transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
   }
@@ -659,14 +659,36 @@ body {
   overflow: hidden;
 }
 
+.hero-bg {
+  background-image: url("/images/bannerherodesktop01.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.nossa-historia-bg {
+  background-image: url("/images/bannernhdesktop.jpg");
+}
+
+@media (max-width: 768px) {
+  .hero-bg {
+    background-image: url("/images/bannermobile1.jpg") !important;
+    background-position: center center !important;
+  }
+  
+  .nossa-historia-bg {
+    background-image: url("/images/bannernossahistoria.jpg") !important;
+  }
+}
+
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.78) 0%,
-    rgba(0, 0, 0, 0.3) 40%,
-    transparent 65%
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.35) 100%
   );
 }
 
@@ -1204,9 +1226,28 @@ body.tema-10 .section-tag {
    RESPONSIVE HELPERS
    ============================================ */
 
+@media (max-width: 768px) {
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  
+  .hero-badges-container {
+    order: 5;
+    margin-top: 24px;
+    margin-bottom: 0 !important;
+  }
+
+  .navbar {
+    padding: 10px 12px !important;
+  }
+}
+
 @media (max-width: 640px) {
   .section-wrapper {
-    padding: 64px 20px;
+    padding: 64px 12px;
   }
 
   .flip-card {
@@ -1229,15 +1270,47 @@ body.tema-10 .card-dark-override {
 }
 
 /* ============================================
-   AVALIAÇÕES CARROSSEL — RESPONSIVE CARD WIDTH
+   AVALIAÇÕES CARROSSEL — RESPONSIVE DESIGN
    ============================================ */
+.avaliacoes-section {
+  padding: 120px 24px;
+}
+
+.avaliacoes-header {
+  margin-bottom: 60px;
+}
+
 .avaliacao-card {
   min-width: calc(33.333% - 14px) !important;
+  padding: 28px 28px 24px;
+  gap: 16px;
+}
+
+.avaliacao-texto {
+  font-size: 14px;
+  line-height: 1.65;
 }
 
 @media (max-width: 1023px) {
   .avaliacao-card {
     min-width: calc(50% - 10px) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .avaliacoes-section {
+    padding: 48px 12px !important;
+  }
+  .avaliacoes-header {
+    margin-bottom: 24px !important;
+  }
+  .avaliacao-card {
+    padding: 18px 18px 16px !important;
+    gap: 12px !important;
+  }
+  .avaliacao-texto {
+    font-size: 13px !important;
+    line-height: 1.45 !important;
   }
 }
 

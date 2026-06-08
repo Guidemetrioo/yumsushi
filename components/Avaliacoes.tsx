@@ -118,8 +118,8 @@ export default function Avaliacoes() {
     <section
       id="avaliacoes"
       ref={ref}
+      className="avaliacoes-section"
       style={{
-        padding: "120px 24px",
         background: "var(--bg-solid)",
         borderTop: "1px solid var(--borda-card)",
       }}
@@ -127,14 +127,13 @@ export default function Avaliacoes() {
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         {/* Header + rating */}
         <div
-          className="reveal"
+          className="reveal avaliacoes-header"
           style={{
             display: "flex",
-            flexWrap: "wrap",
-            alignItems: "flex-end",
-            justifyContent: "space-between",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
             gap: 24,
-            marginBottom: 60,
           }}
         >
           <div>
@@ -151,7 +150,7 @@ export default function Avaliacoes() {
             >
               — O que dizem sobre nós
             </p>
-            <h2 className="section-title">Avaliações</h2>
+            <h2 className="section-title" style={{ marginBottom: 0 }}>Avaliações</h2>
           </div>
 
           {/* Overall rating */}
@@ -159,7 +158,7 @@ export default function Avaliacoes() {
             style={{
               display: "flex",
               flexDirection: "column",
-              alignItems: "flex-end",
+              alignItems: "center",
               gap: 4,
             }}
           >
@@ -223,10 +222,8 @@ export default function Avaliacoes() {
                 style={{
                   minWidth: "calc(33.333% - 14px)",
                   flexShrink: 0,
-                  padding: "28px 28px 24px",
                   display: "flex",
                   flexDirection: "column",
-                  gap: 16,
                 }}
               >
                 {/* Stars */}
@@ -236,10 +233,9 @@ export default function Avaliacoes() {
 
                 {/* Text */}
                 <p
+                  className="avaliacao-texto"
                   style={{
-                    fontSize: 14,
                     color: "var(--texto-principal)",
-                    lineHeight: 1.65,
                     fontFamily: "Montserrat, sans-serif",
                     fontStyle: "italic",
                     flex: 1,
@@ -303,36 +299,100 @@ export default function Avaliacoes() {
           </div>
         </div>
 
-        {/* Dots */}
+        {/* Navigation (Dots & Arrows) */}
         <div
           style={{
             display: "flex",
+            alignItems: "center",
             justifyContent: "center",
-            gap: 8,
+            gap: 20,
             marginTop: 32,
           }}
         >
-          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
-            <button
-              key={i}
-              id={`avaliacao-dot-${i}`}
-              onClick={() => setCurrent(i)}
-              style={{
-                width: i === current ? 24 : 8,
-                height: 8,
-                borderRadius: 999,
-                background:
-                  i === current
-                    ? "var(--cor-conversao)"
-                    : "var(--borda-card)",
-                border: "none",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-                padding: 0,
-              }}
-              aria-label={`Ir para avaliação ${i + 1}`}
-            />
-          ))}
+          {/* Prev Arrow */}
+          <button
+            onClick={() => setCurrent((prev) => (prev > 0 ? prev - 1 : maxIndex))}
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid var(--borda-card)",
+              borderRadius: "50%",
+              width: 36,
+              height: 36,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              color: "var(--texto-principal)",
+              fontSize: 16,
+              transition: "all 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "var(--cor-conversao)";
+              e.currentTarget.style.color = "#000";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+              e.currentTarget.style.color = "var(--texto-principal)";
+            }}
+            aria-label="Avaliação anterior"
+          >
+            ←
+          </button>
+
+          {/* Dots */}
+          <div style={{ display: "flex", gap: 8 }}>
+            {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+              <button
+                key={i}
+                id={`avaliacao-dot-${i}`}
+                onClick={() => setCurrent(i)}
+                style={{
+                  width: i === current ? 24 : 8,
+                  height: 8,
+                  borderRadius: 999,
+                  background:
+                    i === current
+                      ? "var(--cor-conversao)"
+                      : "var(--borda-card)",
+                  border: "none",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  padding: 0,
+                }}
+                aria-label={`Ir para avaliação ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Next Arrow */}
+          <button
+            onClick={() => setCurrent((prev) => (prev < maxIndex ? prev + 1 : 0))}
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid var(--borda-card)",
+              borderRadius: "50%",
+              width: 36,
+              height: 36,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              color: "var(--texto-principal)",
+              fontSize: 16,
+              transition: "all 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "var(--cor-conversao)";
+              e.currentTarget.style.color = "#000";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+              e.currentTarget.style.color = "var(--texto-principal)";
+            }}
+            aria-label="Próxima avaliação"
+          >
+            →
+          </button>
         </div>
 
         <div style={{ display: "flex", justifyContent: "center", marginTop: 40 }}>

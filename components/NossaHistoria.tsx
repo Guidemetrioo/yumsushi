@@ -77,11 +77,10 @@ export default function NossaHistoria() {
     >
       {/* Background photo + overlay */}
       <div
+        className="nossa-historia-bg"
         style={{
           position: "absolute",
           inset: 0,
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1617196034183-c21bc315288a?w=1600&q=90)",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -91,7 +90,7 @@ export default function NossaHistoria() {
         style={{
           position: "absolute",
           inset: 0,
-          background: "var(--overlay-historia)",
+          background: "rgba(0, 0, 0, 0.55)",
         }}
       />
 

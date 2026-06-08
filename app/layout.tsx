@@ -133,6 +133,7 @@ export default function RootLayout({
       </head>
       <body
         className={`${montserrat.variable} ${cormorantGaramond.variable} ${playfairDisplay.variable} tema-1`}
+        suppressHydrationWarning
       >
         {children}
       </body>
