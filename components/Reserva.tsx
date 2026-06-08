@@ -108,7 +108,7 @@ export default function Reserva() {
     <section
       id="reserva"
       ref={ref}
-      style={{ padding: "120px 24px", borderTop: "1px solid var(--borda-card)" }}
+      className="section-container"
     >
       <div
         style={{

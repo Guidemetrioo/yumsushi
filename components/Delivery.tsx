@@ -26,11 +26,10 @@ export default function Delivery() {
     <section
       id="delivery"
       ref={ref}
+      className="section-container"
       style={{
         background: "var(--cor-card)",
-        borderTop: "1px solid var(--borda-card)",
         borderBottom: "1px solid var(--borda-card)",
-        padding: "120px 24px",
       }}
     >
       <div

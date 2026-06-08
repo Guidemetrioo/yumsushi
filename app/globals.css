@@ -1223,6 +1223,33 @@ body.tema-10 .section-tag {
 }
 
 /* ============================================
+   SECTION CONTAINER SPACING SYSTEM
+   ============================================ */
+.section-container {
+  padding: 80px 24px;
+  border-top: 1px solid var(--borda-card);
+}
+
+.section-container-no-border {
+  padding: 80px 24px;
+}
+
+.section-container-full-width {
+  padding: 80px 0;
+}
+
+@media (max-width: 768px) {
+  .section-container,
+  .section-container-no-border {
+    padding: 40px 12px !important;
+  }
+  
+  .section-container-full-width {
+    padding: 40px 0 !important;
+  }
+}
+
+/* ============================================
    RESPONSIVE HELPERS
    ============================================ */
 
@@ -1272,10 +1299,6 @@ body.tema-10 .card-dark-override {
 /* ============================================
    AVALIAÇÕES CARROSSEL — RESPONSIVE DESIGN
    ============================================ */
-.avaliacoes-section {
-  padding: 120px 24px;
-}
-
 .avaliacoes-header {
   margin-bottom: 60px;
 }
@@ -1298,9 +1321,6 @@ body.tema-10 .card-dark-override {
 }
 
 @media (max-width: 768px) {
-  .avaliacoes-section {
-    padding: 48px 12px !important;
-  }
   .avaliacoes-header {
     margin-bottom: 24px !important;
   }

@@ -69,9 +69,9 @@ export default function NossaHistoria() {
     <section
       id="nossa-historia"
       ref={ref}
+      className="section-container-no-border"
       style={{
         position: "relative",
-        padding: "120px 24px",
         overflow: "hidden",
       }}
     >

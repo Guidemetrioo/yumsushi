@@ -53,8 +53,8 @@ export default function Galeria() {
     <section
       id="galeria"
       ref={ref}
+      className="section-container-full-width"
       style={{
-        padding: "120px 0",
         background: "var(--bg-solid)",
       }}
     >

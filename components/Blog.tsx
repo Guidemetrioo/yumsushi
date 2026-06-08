@@ -36,10 +36,7 @@ export default function Blog() {
     <section
       id="blog"
       ref={ref}
-      style={{
-        padding: "120px 24px",
-        borderTop: "1px solid var(--borda-card)",
-      }}
+      className="section-container"
     >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         {/* Header */}

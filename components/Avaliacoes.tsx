@@ -118,10 +118,9 @@ export default function Avaliacoes() {
     <section
       id="avaliacoes"
       ref={ref}
-      className="avaliacoes-section"
+      className="section-container"
       style={{
         background: "var(--bg-solid)",
-        borderTop: "1px solid var(--borda-card)",
       }}
     >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>

@@ -242,7 +242,7 @@ export default function Rodizio() {
   };
 
   return (
-    <section id="rodizio" style={{ padding: "120px 0", overflow: "hidden" }}>
+    <section id="rodizio" className="section-container-full-width" style={{ overflow: "hidden" }}>
       <div className="section-wrapper" style={{ paddingTop: 0, paddingBottom: 0 }}>
         {/* Header */}
         <div className="reveal" style={{ marginBottom: 60 }}>
