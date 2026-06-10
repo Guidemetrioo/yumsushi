@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const WA_LINK = "https://wa.me/5511960175164";
@@ -195,33 +195,15 @@ const cardapioItems: Record<
 };
 
 export default function Rodizio() {
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const [activeCategoria, setActiveCategoria] = useState("sashimi");
-  const [flippedCards, setFlippedCards] = useState<Record<string, boolean>>({});
-  const hintedRef = useRef(false);
 
   useEffect(() => {
-    // Flip hint on first viewport entry — one time only
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           entry.target.querySelectorAll(".reveal").forEach((el) => {
             el.classList.add("visible");
           });
-
-          if (!hintedRef.current) {
-            hintedRef.current = true;
-            const delays = [0, 400, 800];
-            cardsRef.current.forEach((card, i) => {
-              if (!card) return;
-              const inner = card.querySelector(".flip-card-inner") as HTMLElement;
-              if (!inner) return;
-              setTimeout(() => {
-                inner.classList.add("hinting");
-                setTimeout(() => inner.classList.remove("hinting"), 1500);
-              }, delays[i]);
-            });
-          }
         }
       },
       { threshold: 0.1 }
@@ -231,15 +213,6 @@ export default function Rodizio() {
     if (section) observer.observe(section);
     return () => observer.disconnect();
   }, []);
-
-  const toggleFlip = (id: string) => {
-    if (window.innerWidth <= 768) {
-      setFlippedCards((prev) => ({
-        ...prev,
-        [id]: !prev[id],
-      }));
-    }
-  };
 
   return (
     <section id="rodizio" className="section-container-full-width" style={{ overflow: "hidden" }}>
@@ -262,279 +235,248 @@ export default function Rodizio() {
           <h2 className="section-title">Escolha seu Rodízio</h2>
           <p className="section-subtitle">
             Cada opção foi pensada para oferecer o máximo de prazer gastronômico.
-            Passe o mouse para ver o que está incluso.
+            Confira abaixo nossos valores e itens inclusos.
           </p>
         </div>
 
-        {/* Flip Cards Grid */}
+        {/* Flat Cards Grid */}
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
             gap: 32,
-            marginBottom: 16,
+            marginBottom: 40,
           }}
         >
           {rodizioCards.map((card, idx) => (
             <div
               key={card.id}
               id={card.id}
-              className={`flip-card reveal ${flippedCards[card.id] ? "flipped" : ""}`}
-              style={{ transitionDelay: `${idx * 0.1}s` }}
-              ref={(el) => {
-                cardsRef.current[idx] = el;
-              }}
-              onClick={() => {
-                toggleFlip(card.id);
+              className="card-base reveal"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                position: "relative",
+                border: card.destaque
+                  ? `2px solid var(--cor-conversao)`
+                  : `1px solid var(--borda-card)`,
+                transitionDelay: `${idx * 0.1}s`,
+                overflow: "hidden",
               }}
             >
-              <div className="flip-card-inner">
-                {/* FRONT */}
+              {/* Destaque badge */}
+              {card.destaque && (
                 <div
-                  className="flip-card-front card-base"
                   style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    position: "relative",
-                    border: card.destaque
-                      ? `2px solid var(--cor-conversao)`
-                      : `1px solid var(--borda-card)`,
+                    position: "absolute",
+                    top: 16,
+                    right: 16,
+                    zIndex: 10,
+                    background: "var(--cor-conversao)",
+                    color: "#fff",
+                    fontSize: 10,
+                    fontWeight: 800,
+                    letterSpacing: "1.5px",
+                    textTransform: "uppercase",
+                    padding: "4px 10px",
+                    borderRadius: 999,
+                    fontFamily: "Montserrat, sans-serif",
                   }}
                 >
-                  {/* Destaque badge */}
-                  {card.destaque && (
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: 16,
-                        right: 16,
-                        zIndex: 10,
-                        background: "var(--cor-conversao)",
-                        color: "#fff",
-                        fontSize: 10,
-                        fontWeight: 800,
-                        letterSpacing: "1.5px",
-                        textTransform: "uppercase",
-                        padding: "4px 10px",
-                        borderRadius: 999,
-                        fontFamily: "Montserrat, sans-serif",
-                      }}
-                    >
-                      Mais Popular
-                    </div>
-                  )}
+                  Mais Popular
+                </div>
+              )}
 
-                  {/* Image */}
-                  <div
+              {/* Image */}
+              <div
+                style={{
+                  position: "relative",
+                  height: 200,
+                  overflow: "hidden",
+                  borderRadius: `var(--card-radius) var(--card-radius) 0 0`,
+                  flexShrink: 0,
+                }}
+              >
+                <Image
+                  src={card.imagem}
+                  alt={card.nome}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+
+              {/* Content Block */}
+              <div
+                style={{
+                  padding: "24px 24px 24px",
+                  flex: 1,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 20,
+                }}
+              >
+                {/* Header (Type & Name & Destaque Price) */}
+                <div>
+                  <span
                     style={{
-                      position: "relative",
-                      height: 200,
-                      overflow: "hidden",
-                      borderRadius: `var(--card-radius) var(--card-radius) 0 0`,
-                      flexShrink: 0,
+                      fontSize: 10,
+                      fontWeight: 700,
+                      letterSpacing: "1.5px",
+                      textTransform: "uppercase",
+                      color: "var(--cor-estrutural)",
+                      marginBottom: 6,
+                      display: "block",
+                      fontFamily: "Montserrat, sans-serif",
                     }}
                   >
-                    <Image
-                      src={card.imagem}
-                      alt={card.nome}
-                      fill
-                      style={{ objectFit: "cover" }}
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </div>
-
-                  {/* Info */}
+                    {card.tipo === "dupla" ? "PROMOÇÃO CASAL / DUPLA" : "RODÍZIO INDIVIDUAL"}
+                  </span>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: 22,
+                      fontWeight: 700,
+                      color: "var(--texto-principal)",
+                      marginBottom: 8,
+                    }}
+                  >
+                    {card.nome}
+                  </h3>
                   <div
                     style={{
-                      padding: "24px 24px 80px",
-                      flex: 1,
                       display: "flex",
-                      flexDirection: "column",
+                      alignItems: "baseline",
+                      gap: 8,
+                      flexWrap: "wrap",
                     }}
                   >
                     <span
+                      className="price-tag"
                       style={{
-                        fontSize: 10,
+                        fontSize: 28,
                         fontWeight: 700,
-                        letterSpacing: "1.5px",
-                        textTransform: "uppercase",
-                        color: "var(--cor-estrutural)",
-                        marginBottom: 6,
-                        display: "block",
-                        fontFamily: "Montserrat, sans-serif",
+                        color: "var(--cor-conversao)",
+                        fontFamily: "var(--font-display, Cormorant Garamond, serif)",
+                        lineHeight: 1.1,
                       }}
                     >
-                      {card.tipo === "dupla" ? "PROMOÇÃO CASAL / DUPLA" : "RODÍZIO INDIVIDUAL"}
+                      {card.precoDestaque}
                     </span>
-                    <h3
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        fontSize: 22,
-                        fontWeight: 700,
-                        color: "var(--texto-principal)",
-                        marginBottom: 8,
-                      }}
-                    >
-                      {card.nome}
-                    </h3>
-                    <div style={{ marginTop: "auto" }}>
-                      <p
-                        className="price-tag"
+                    {card.precoDestaqueDesc && (
+                      <span
                         style={{
-                          fontSize: 28,
-                          fontWeight: 700,
-                          color: "var(--cor-conversao)",
-                          fontFamily: "var(--font-display, Cormorant Garamond, serif)",
-                          lineHeight: 1.1,
+                          fontSize: 12,
+                          color: "var(--texto-secundario)",
+                          fontWeight: 500,
                         }}
                       >
-                        {card.precoDestaque}
-                      </p>
-                      {card.precoDestaqueDesc && (
-                        <p
-                          style={{
-                            fontSize: 12,
-                            color: "var(--texto-secundario)",
-                            fontWeight: 500,
-                          }}
-                        >
-                          {card.precoDestaqueDesc}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Fixed footer button */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      padding: "0 24px 20px",
-                    }}
-                  >
-                    <a
-                      href="https://dg.dguests.com/reserva_mesa/yumsushi"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-primary"
-                      style={{ width: "100%", justifyContent: "center" }}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      Reservar Agora
-                    </a>
+                        ({card.precoDestaqueDesc})
+                      </span>
+                    )}
                   </div>
                 </div>
 
-                {/* BACK */}
-                <div
-                  className="flip-card-back card-base"
-                  style={{
-                    background: "var(--cor-card)",
-                    border: card.destaque
-                      ? `2px solid var(--cor-conversao)`
-                      : `1px solid var(--borda-card)`,
-                  }}
-                >
-                  <div style={{ flex: 1, overflow: "auto" }}>
-                    <p
-                      style={{
-                        fontSize: 11,
-                        fontWeight: 700,
-                        letterSpacing: "3px",
-                        textTransform: "uppercase",
-                        color: "var(--cor-estrutural)",
-                        marginBottom: 12,
-                        fontFamily: "Montserrat, sans-serif",
-                      }}
-                    >
-                      Valores do Rodízio
-                    </p>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: 6,
-                        marginBottom: 18,
-                        borderBottom: "1px solid var(--borda-card)",
-                        paddingBottom: 14,
-                      }}
-                    >
-                      {card.tabelaPrecos?.map((p, idx) => (
-                        <div
-                          key={idx}
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            fontSize: 12,
-                            color: "var(--texto-principal)",
-                          }}
-                        >
-                          <span style={{ fontWeight: 500 }}>{p.label}</span>
-                          <span style={{ color: "var(--cor-conversao)", fontWeight: 700 }}>{p.valor}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    <p
-                      style={{
-                        fontSize: 11,
-                        fontWeight: 700,
-                        letterSpacing: "3px",
-                        textTransform: "uppercase",
-                        color: "var(--cor-estrutural)",
-                        marginBottom: 12,
-                        fontFamily: "Montserrat, sans-serif",
-                      }}
-                    >
-                      O que está incluso
-                    </p>
-                    <ul
-                      style={{
-                        listStyle: "none",
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: 8,
-                        marginBottom: 24,
-                      }}
-                    >
-                      {card.incluso.map((item) => (
-                        <li
-                          key={item}
-                          style={{
-                            display: "flex",
-                            alignItems: "flex-start",
-                            gap: 10,
-                            fontSize: 12,
-                            color: "var(--texto-principal)",
-                            lineHeight: 1.4,
-                          }}
-                        >
-                          <span
-                            style={{
-                              color: "var(--cor-conversao)",
-                              fontWeight: 700,
-                              flexShrink: 0,
-                              marginTop: 1,
-                            }}
-                          >
-                            ✓
-                          </span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                {/* Table of Prices */}
+                <div>
+                  <p
+                    style={{
+                      fontSize: 11,
+                      fontWeight: 700,
+                      letterSpacing: "2px",
+                      textTransform: "uppercase",
+                      color: "var(--cor-estrutural)",
+                      marginBottom: 8,
+                      fontFamily: "Montserrat, sans-serif",
+                    }}
+                  >
+                    Valores do Rodízio
+                  </p>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 6,
+                      borderBottom: "1px solid var(--borda-card)",
+                      paddingBottom: 14,
+                    }}
+                  >
+                    {card.tabelaPrecos?.map((p, idx) => (
+                      <div
+                        key={idx}
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          fontSize: 12,
+                          color: "var(--texto-principal)",
+                        }}
+                      >
+                        <span style={{ fontWeight: 500 }}>{p.label}</span>
+                        <span style={{ color: "var(--cor-conversao)", fontWeight: 700 }}>{p.valor}</span>
+                      </div>
+                    ))}
                   </div>
+                </div>
 
-                  {/* Back CTA */}
+                {/* What is included */}
+                <div style={{ flex: 1 }}>
+                  <p
+                    style={{
+                      fontSize: 11,
+                      fontWeight: 700,
+                      letterSpacing: "2px",
+                      textTransform: "uppercase",
+                      color: "var(--cor-estrutural)",
+                      marginBottom: 8,
+                      fontFamily: "Montserrat, sans-serif",
+                    }}
+                  >
+                    O que está incluso
+                  </p>
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 8,
+                    }}
+                  >
+                    {card.incluso.map((item) => (
+                      <li
+                        key={item}
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          gap: 10,
+                          fontSize: 12,
+                          color: "var(--texto-principal)",
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        <span
+                          style={{
+                            color: "var(--cor-conversao)",
+                            fontWeight: 700,
+                            flexShrink: 0,
+                            marginTop: 1,
+                          }}
+                        >
+                          ✓
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Action button */}
+                <div style={{ marginTop: 8 }}>
                   <a
                     href="https://dg.dguests.com/reserva_mesa/yumsushi"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-primary"
-                    style={{ width: "100%", justifyContent: "center", flexShrink: 0 }}
-                    onClick={(e) => e.stopPropagation()}
+                    style={{ width: "100%", justifyContent: "center" }}
                   >
                     Reservar Agora
                   </a>
@@ -543,21 +485,6 @@ export default function Rodizio() {
             </div>
           ))}
         </div>
-
-        {/* Hint label */}
-        <p
-          style={{
-            textAlign: "center",
-            fontSize: 12,
-            fontStyle: "italic",
-            color: "var(--texto-secundario)",
-            opacity: 0.7,
-            marginBottom: 80,
-            fontFamily: "Montserrat, sans-serif",
-          }}
-        >
-          Toque para ver o que está incluso
-        </p>
 
         {/* ── Cardápio Section ── */}
         <div id="cardapio" style={{ paddingTop: 60 }}>
