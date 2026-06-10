@@ -72,13 +72,13 @@ export default function Avaliacoes() {
   const ref = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(0);
-  const itemsPerView = useRef(3);
+  const [itemsPerView, setItemsPerView] = useState(3);
 
   useEffect(() => {
     const updateItemsPerView = () => {
-      if (window.innerWidth < 640) itemsPerView.current = 1;
-      else if (window.innerWidth < 1024) itemsPerView.current = 2;
-      else itemsPerView.current = 3;
+      if (window.innerWidth < 640) setItemsPerView(1);
+      else if (window.innerWidth < 1024) setItemsPerView(2);
+      else setItemsPerView(3);
     };
     updateItemsPerView();
     window.addEventListener("resize", updateItemsPerView);
@@ -98,7 +98,7 @@ export default function Avaliacoes() {
     // Auto-advance
     const interval = setInterval(() => {
       setCurrent((prev) => {
-        const max = avaliacoes.length - itemsPerView.current;
+        const max = avaliacoes.length - itemsPerView;
         return prev >= max ? 0 : prev + 1;
       });
     }, 4000);
@@ -108,9 +108,9 @@ export default function Avaliacoes() {
       observer.disconnect();
       clearInterval(interval);
     };
-  }, []);
+  }, [itemsPerView]);
 
-  const maxIndex = avaliacoes.length - itemsPerView.current;
+  const maxIndex = avaliacoes.length - itemsPerView;
 
   const renderStars = (n: number) => "★".repeat(n);
 
@@ -210,7 +210,8 @@ export default function Avaliacoes() {
             style={{
               display: "flex",
               gap: 20,
-              transform: `translateX(calc(-${current} * (100% / ${itemsPerView.current}) - ${current * 20}px))`,
+              width: "100%",
+              transform: `translateX(calc(-${current} * (100% / ${itemsPerView}) - ${current * 20}px))`,
               transition: "transform 0.5s ease",
             }}
           >

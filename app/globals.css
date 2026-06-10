@@ -346,6 +346,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
+  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
@@ -360,6 +361,17 @@ body {
   transform: rotateY(180deg);
 }
 
+/* Fix rendering hierarchy on flipped state to prevent back content from disappearing */
+.flip-card.flipped .flip-card-back {
+  z-index: 10;
+  -webkit-transform: rotateY(180deg) translate3d(0, 0, 5px) !important;
+  transform: rotateY(180deg) translate3d(0, 0, 5px) !important;
+}
+
+.flip-card.flipped .flip-card-front {
+  z-index: 1;
+}
+
 .flip-card-front,
 .flip-card-back {
   position: absolute;
@@ -367,33 +379,26 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   border-radius: var(--card-radius);
   overflow: hidden;
+  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
 
 .flip-card-front {
-  z-index: 2;
-  transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg) translate3d(0, 0, 1px);
+  transform: rotateY(0deg) translate3d(0, 0, 1px);
 }
 
 .flip-card-back {
-  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg) translate3d(0, 0, 1px);
+  transform: rotateY(180deg) translate3d(0, 0, 1px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 32px;
-  z-index: 1;
-}
-
-.flip-card.flipped .flip-card-front {
-  z-index: 1;
-}
-
-.flip-card.flipped .flip-card-back {
-  z-index: 2;
 }
 
 /* ============================================
@@ -1278,7 +1283,7 @@ body.tema-10 .section-tag {
   }
 
   .flip-card {
-    height: 380px;
+    height: 510px;
   }
 }
 
@@ -1312,6 +1317,7 @@ body.tema-10 .card-dark-override {
 .avaliacao-texto {
   font-size: 14px;
   line-height: 1.65;
+  white-space: normal !important;
 }
 
 @media (max-width: 1023px) {
@@ -1331,11 +1337,18 @@ body.tema-10 .card-dark-override {
   .avaliacao-texto {
     font-size: 13px !important;
     line-height: 1.45 !important;
+    white-space: normal !important;
   }
 }
 
 @media (max-width: 639px) {
   .avaliacao-card {
+    width: 100% !important;
     min-width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }
